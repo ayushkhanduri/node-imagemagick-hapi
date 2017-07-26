@@ -3,7 +3,7 @@
 const Hapi = require('hapi');
 const config = require('./config');
 const mongoose = require('mongoose');
-const server = new Hapi.Server(+process.env.PORT, '0.0.0.0');
+const server = new Hapi.Server();
 
 require('./models/Users');
 
