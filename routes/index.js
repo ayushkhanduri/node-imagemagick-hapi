@@ -87,7 +87,7 @@ let allRoutes = [
                 var payload = request.payload;
                 if(payload){
                     var name = factoryData.addRandomString() + payload.data.hapi.filename  ;
-                    var path ="./uploads/"+ name;
+                    var path =__dirname + "/../uploads/"+ name;
                     var file = fs.createWriteStream(path);
                     file.on('error', (err)=>{
                         console.log(err);
@@ -96,10 +96,12 @@ let allRoutes = [
                     fs.writeFile(path,payload.data._data,'binary',(err)=>{
                         if(err)
                             reply(JSON.stringify(err));
+                        console.log("level 1");
                         var propArr = ['-blend','100%','-gravity','SouthEast','./public/images/logo.png','./uploads/'+name,"./uploads/"+name];
                         imageMagic.composite(propArr,(err,stdout,stderr)=>{
                             if(err)
                                 reply(JSON.stringify(err));
+                            console.log("level 2");
                             let options = {
                                 width : factoryData.width,
                                 height: factoryData.height,
@@ -110,6 +112,7 @@ let allRoutes = [
                                 if(err){
                                     reply(JSON.stringify(err));
                                 }
+                                console.log("level 3");
                                 User.findOne({},(err,user)=>{
                                     let ret = {
                                         bigUrl: "http://" + request.headers.host + "/images/" + name ,
