@@ -18,6 +18,15 @@ let allRoutes = [
     },
     {
         method: "GET",
+        path: "/static/images/{file*}",
+        handler: {
+            directory: {
+                path: "public/images"
+            }
+        }
+    },
+    {
+        method: "GET",
         path: "/images/{file*}",
         handler: {
             directory:{

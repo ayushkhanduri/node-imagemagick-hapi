@@ -37,6 +37,7 @@ class UserData extends Component {
         smallImage: data.smallUrl
       }
     });
+    document.getElementById("loadingDiv").style.display= "none";
     alert("New images updated");
   }
 

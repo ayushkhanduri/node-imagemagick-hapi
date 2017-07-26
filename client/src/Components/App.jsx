@@ -22,11 +22,10 @@ class App extends Component {
       method: "POST",
       body: data
     }
+    document.getElementById("loadingDiv").style.display= "block";
     fetch("/logoUpload",requestObj).then((response)=>{
-      console.log(response);
       return response.json();
     }).then((data)=>{
-      console.log(data);
       this.cleanFileInput("fileInput");
       this.refs.usrData.changeImage(data);
     })
@@ -59,7 +58,10 @@ class App extends Component {
       imageUrl = (<div className="previewText">Please select an Image for Preview</div>);
     }
     return (
+          
           <div className="container">
+            <div id="loadingDiv">
+            </div>
             <Header/>
             <div className="inlineBlock">
                 <div className= "floatLeft">
