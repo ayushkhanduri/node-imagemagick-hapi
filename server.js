@@ -13,8 +13,7 @@ mongoose.connect(dbUrl,{
 },()=>console.log("Database connected !"));
 
 server.connection({
-    host: config.host,
-    port: process.env.PORT || config.port
+    port: ~~process.env.PORT || config.port
 });
 
 let indexRoutes = require("./routes/index");
