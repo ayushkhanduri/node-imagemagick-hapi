@@ -78,7 +78,7 @@ let allRoutes = [
                 var payload = request.payload;
                 if(payload){
                     var name = factoryData.addRandomString() + payload.data.hapi.filename  ;
-                    var path = __dirname +"/../uploads/"+ name;
+                    var path ="./uploads/"+ name;
                     var file = fs.createWriteStream(path);
                     file.on('error', (err)=>{
                         console.log(err);
