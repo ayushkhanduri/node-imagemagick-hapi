@@ -22952,7 +22952,6 @@ var App = function (_Component) {
     value: function render() {
       var _this4 = this;
 
-      console.log("render");
       var imagePreviewUrl = this.state.imagePreviewUrl;
 
       var imageUrl = null;

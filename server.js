@@ -28,7 +28,7 @@ server.register(require('inert'),(err)=>{
         if(err){
             throw err;
         }
-        console.log("server running at : ", config.port);
+        console.log("server running at : ",process.env.PORT || config.port);
     });
 
     
