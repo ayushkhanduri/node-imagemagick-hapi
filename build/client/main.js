@@ -22916,7 +22916,7 @@ var App = function (_Component) {
         method: "POST",
         body: data
       };
-      fetch("http://localhost:3000/logoUpload", requestObj).then(function (response) {
+      fetch("/logoUpload", requestObj).then(function (response) {
         console.log(response);
         return response.json();
       }).then(function (data) {

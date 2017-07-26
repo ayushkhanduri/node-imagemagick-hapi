@@ -22,7 +22,7 @@ class App extends Component {
       method: "POST",
       body: data
     }
-    fetch("http://localhost:3000/logoUpload",requestObj).then((response)=>{
+    fetch("/logoUpload",requestObj).then((response)=>{
       console.log(response);
       return response.json();
     }).then((data)=>{
