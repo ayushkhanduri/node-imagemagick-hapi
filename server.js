@@ -7,7 +7,8 @@ const server = new Hapi.Server();
 
 require('./models/Users');
 
-mongoose.connect('mongodb://localhost:27017/'+config.dbName,{
+const dbUrl = config.getDbUrl();
+mongoose.connect(dbUrl,{
     useMongoClient: true
 },()=>console.log("Database connected !"));
 

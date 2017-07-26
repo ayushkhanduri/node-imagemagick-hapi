@@ -51,7 +51,6 @@ class App extends Component {
   }
 
   render(){
-    console.log("render");
     let {imagePreviewUrl} = this.state;
     let imageUrl = null;
     if (imagePreviewUrl) {

@@ -106,8 +106,8 @@ let allRoutes = [
                                 }
                                 User.findOne({},(err,user)=>{
                                     let ret = {
-                                        bigUrl: config.host + ":" + config.port + "/images/" + name ,
-                                        smallUrl: config.host + ":" + config.port + "/images/" + name + "_" + factoryData.smallImgName()
+                                        bigUrl: "http://" + request.headers.host + "/images/" + name ,
+                                        smallUrl: "http://" + request.headers.host + "/images/" + name + "_" + factoryData.smallImgName()
                                     }
                                     user.imageUrl = ret.bigUrl;
                                     user.smallImgUrl = ret.smallUrl;
