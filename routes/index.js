@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const factoryData = require('../factoryData');
-const imageMagic = require('imagemagick');
+const imageMagic = require('../imagemagick');
 const mongoose = require('mongoose');
 
 let User = mongoose.model('User');
