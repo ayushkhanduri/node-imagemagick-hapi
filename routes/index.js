@@ -76,7 +76,6 @@ let allRoutes = [
             },
             handler: function(request,reply){
                 var payload = request.payload;
-                console.log(payload);
                 if(payload){
                     var name = factoryData.addRandomString() + payload.data.hapi.filename  ;
                     var path = __dirname +"/../uploads/"+ name;
@@ -87,11 +86,11 @@ let allRoutes = [
 
                     fs.writeFile(path,payload.data._data,'binary',(err)=>{
                         if(err)
-                            throw err;
+                            reply(JSON.stringify(err));
                         var propArr = ['-blend','100%','-gravity','SouthEast','./public/images/logo.png','./uploads/'+name,"./uploads/"+name];
                         imageMagic.composite(propArr,(err,stdout,stderr)=>{
                             if(err)
-                                throw err;
+                                reply(JSON.stringify(err));
                             let options = {
                                 width : factoryData.width,
                                 height: factoryData.height,
@@ -100,7 +99,7 @@ let allRoutes = [
                             }
                             imageMagic.resize(options,(err)=>{
                                 if(err){
-                                    throw err;
+                                    reply(JSON.stringify(err));
                                 }
                                 User.findOne({},(err,user)=>{
                                     let ret = {
@@ -111,7 +110,7 @@ let allRoutes = [
                                     user.smallImgUrl = ret.smallUrl;
                                     user.save((err)=>{
                                         if(err)
-                                            throw err;
+                                            reply(JSON.stringify(err));
                                         console.log("user saved");
                                         reply(JSON.stringify(ret));
                                     });
