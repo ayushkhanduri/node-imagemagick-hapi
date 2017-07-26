@@ -14,7 +14,7 @@ mongoose.connect(dbUrl,{
 
 server.connection({
     host: config.host,
-    port: config.port
+    port: process.env.PORT || config.port
 });
 
 let indexRoutes = require("./routes/index");
