@@ -17,18 +17,23 @@ class App extends Component {
     e.preventDefault();
     let data = new FormData();
     let imageData = document.querySelector('input[type="file"]').files[0];
-    data.append("data",imageData);
-    let requestObj = {
-      method: "POST",
-      body: data
+    if(imageData){  
+      data.append("data",imageData);
+      let requestObj = {
+        method: "POST",
+        body: data
+      }
+      document.getElementById("loadingDiv").style.display= "block";
+      fetch("/logoUpload",requestObj).then((response)=>{
+        return response.json();
+      }).then((data)=>{
+        this.cleanFileInput("fileInput");
+        this.refs.usrData.changeImage(data);
+      })
+    }else{
+      alert("Please enter a file!");
     }
-    document.getElementById("loadingDiv").style.display= "block";
-    fetch("/logoUpload",requestObj).then((response)=>{
-      return response.json();
-    }).then((data)=>{
-      this.cleanFileInput("fileInput");
-      this.refs.usrData.changeImage(data);
-    })
+    
   }
   cleanFileInput(id){
     document.getElementById(id).value= ""; 

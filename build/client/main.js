@@ -22911,18 +22911,22 @@ var App = function (_Component) {
       e.preventDefault();
       var data = new FormData();
       var imageData = document.querySelector('input[type="file"]').files[0];
-      data.append("data", imageData);
-      var requestObj = {
-        method: "POST",
-        body: data
-      };
-      document.getElementById("loadingDiv").style.display = "block";
-      fetch("/logoUpload", requestObj).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.cleanFileInput("fileInput");
-        _this2.refs.usrData.changeImage(data);
-      });
+      if (imageData) {
+        data.append("data", imageData);
+        var requestObj = {
+          method: "POST",
+          body: data
+        };
+        document.getElementById("loadingDiv").style.display = "block";
+        fetch("/logoUpload", requestObj).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          _this2.cleanFileInput("fileInput");
+          _this2.refs.usrData.changeImage(data);
+        });
+      } else {
+        alert("Please enter a file!");
+      }
     }
   }, {
     key: 'cleanFileInput',
