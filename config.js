@@ -1,6 +1,6 @@
 let configurations = {
     host: "localhost",
-    port: 3000,
+    port: 5000,
     dbName: 'serverImages',
     dbUsername: "amazingtea",
     dbPassword: "secretwarspart3",
