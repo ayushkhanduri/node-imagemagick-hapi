@@ -13,7 +13,7 @@ mongoose.connect(dbUrl,{
 },()=>console.log("Database connected !"));
 
 server.connection({
-    port: ~~process.env.PORT || config.port
+    port: ~~process.env.PORT || config.port // because in hapi the port is given as number 
 });
 
 let indexRoutes = require("./routes/index");
