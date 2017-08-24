@@ -5,7 +5,7 @@ let configurations = {
     dbUsername: "",
     dbPassword: "",
     getDbUrl: function(){
-        return `mongodb://${this.dbUsername}:${this.dbPassword}@ds055862.mlab.com:55862/serverimages`;
+        return `mongodb://${this.dbUsername}:${this.dbPassword}@`;
     }
 }
 module.exports = configurations;
